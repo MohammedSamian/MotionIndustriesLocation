@@ -92,7 +92,7 @@ public class LocationTests extends APITestBase {
                 .get("/misvc/mi/services/json/locations.locations");
         LOGGER.info("Body from request is : " + response.getBody());
         JSONObject jsonObject = getJsonObjectFromResponse(response);
-        LOGGER.info("Validate ");
+        LOGGER.info("Validate no location is shown");
         Assert.assertTrue(jsonObject.containsValue("errorMsg:Error retrieving locations}"));
     }
 }
