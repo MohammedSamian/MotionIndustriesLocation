@@ -82,7 +82,7 @@ public class LocationTests extends APITestBase {
     }
 
     @Test()
-    public void validateLocationNotShownIfInvalidZipCodeIsProvided() throws ParseException {
+    public void validateUserShouldNotBeAbleToMakeAGetRequestWithInvalidZipCode() throws ParseException {
         RestAssured.baseURI = baseURI;
         RestAssured.get(baseURI);
         Response response = RestAssured.given()
@@ -90,9 +90,8 @@ public class LocationTests extends APITestBase {
                 .header("User-Agent", userAgentHeader)
                 .param("postalCode", "ABCDE")
                 .get("/misvc/mi/services/json/locations.locations");
-        LOGGER.info("Body from request is : " + response.getBody());
         JSONObject jsonObject = getJsonObjectFromResponse(response);
-        LOGGER.info("Validate no location is shown");
-        Assert.assertTrue(jsonObject.containsValue("errorMsg:Error retrieving locations}"));
+        LOGGER.info("Validate response body is empty ");
+        Assert.assertNull(jsonObject);
     }
 }
