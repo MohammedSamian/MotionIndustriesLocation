@@ -94,6 +94,5 @@ public class LocationTests extends APITestBase {
         JSONObject jsonObject = getJsonObjectFromResponse(response);
         LOGGER.info("Validate Search is invalid ");
         Assert.assertTrue(jsonObject.containsValue("errorMsg:Error retrieving locations}"));
-        LOGGER.info("Validate Search is invalid ");
     }
 }
